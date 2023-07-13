@@ -65,6 +65,7 @@ public class MonthlyStatsPrinter {
         }
         System.out.printf("Также за %s, больше всего потрачено на: %s, сумма трат составила: %d! \n",
                 monthName, worstUnit, maxWaste);
+        System.out.println();
     }
 }
 

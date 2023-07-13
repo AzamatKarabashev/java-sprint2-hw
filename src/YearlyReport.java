@@ -8,7 +8,7 @@ public class YearlyReport {
 
     public void yearLoader(String fileName, int yearNumber, List<SaverYearly> reports) {   //принмает на вход файл и лист,
                                                                                                         //возвращает лист наполненный
-                                                                                                        //экземпляярами класса SaverYearly
+                                                                                                        //экземплярами класса SaverYearly
         List<String> yearContent = fileReader.readFileContents(fileName);
         for (int i = 1; i < yearContent.size(); i++) {
             String[] partsOfContent = yearContent.get(i).split(",");

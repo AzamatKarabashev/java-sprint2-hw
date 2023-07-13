@@ -32,33 +32,37 @@ public class DataCollation {
         for (Integer monthNumber : monthlyIncome.keySet()) {
             int monthlyReportAmount = monthlyIncome.get(monthNumber);
             int yearlyReportAmount = yearlyIncome.get(monthNumber);
-            if (monthlyReportAmount != yearlyReportAmount) {
-                System.out.printf("По результатам проверки месяца %d, обнаружено несоотвествие " +
-                        "суммы доходов по версиям ежемесячных отчетов и ежегодного отчета!\n", monthNumber);
+            if (monthlyReportAmount != 0 || yearlyReportAmount != 0) {
+                if (monthlyReportAmount != yearlyReportAmount) {
+                    System.out.printf("По результатам проверки месяца %d, обнаружено несоотвествие " +
+                            "суммы доходов по версиям ежемесячных отчетов и ежегодного отчета!\n", monthNumber);
 
-            } else {
-                System.out.printf("По результатам проверки месяца %d, " +
-                        "несоответствий в отчетах о доходах не обнаружено!\n", monthNumber);
+                } else {
+                    System.out.printf("По результатам проверки месяца %d, " +
+                            "несоответствий в отчетах о доходах не обнаружено!\n", monthNumber);
 
+                }
             }
         }
         for (Integer monthNumber : monthlyExpense.keySet()) {
             int monthlyReportExpense = monthlyExpense.get(monthNumber);
             int yearlyReportExpense = yearlyExpense.get(monthNumber);
-            if (monthlyReportExpense != yearlyReportExpense) {
-                System.out.printf("По результатам проверки месяца %d, обнаружено несоотвествие суммы " +
-                        "расходов по версиям ежемесячных отчетов и ежегодного отчета!\n", monthNumber);
+            if (monthlyReportExpense != 0 || yearlyReportExpense != 0) {
+                if (monthlyReportExpense != yearlyReportExpense) {
+                    System.out.printf("По результатам проверки месяца %d, обнаружено несоотвествие суммы " +
+                            "расходов по версиям ежемесячных отчетов и ежегодного отчета!\n", monthNumber);
 
-            } else {
-                System.out.printf("По результатам проверки месяца %d, несоответствий " +
-                        "в отчетах о расходах не обнаружено!\n", monthNumber);
+                } else {
+                    System.out.printf("По результатам проверки месяца %d, несоответствий " +
+                            "в отчетах о расходах не обнаружено!\n", monthNumber);
 
+                }
             }
         }
     }
 
     public void yearReportToHashMapSaver(List<SaverYearly> saver) { //сохраняет в хешмапу по ключам месяцы
-                                                                    //и по значениям доход/расход
+        //и по значениям доход/расход
         for (SaverYearly save : saver) {
             if (!save.isExpense) {
                 yearlyIncome.put(save.month, yearlyIncome.getOrDefault(save.month, 0) + save.amount);
@@ -73,7 +77,7 @@ public class DataCollation {
     }
 
     public void monthReportToHashMapSaver(List<SaverMonthly> saver) {   //сохраняет в хешмапу по ключам месяцы
-                                                                        //и по значениям общую сумму доходов/расходов
+        //и по значениям общую сумму доходов/расходов
         for (SaverMonthly save : saver) {
             if (!save.isExpense && save.monthName.equalsIgnoreCase("январь")) {
                 int monthNumber = 1;
