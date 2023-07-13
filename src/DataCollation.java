@@ -28,6 +28,7 @@ public class DataCollation {
         if (monthlyIncome.isEmpty() || yearlyIncome.isEmpty() ||
                 monthlyExpense.isEmpty() || yearlyExpense.isEmpty()) {
             System.out.println("Отчеты не были считаны сверщиком.");
+            return;
         }
         for (Integer monthNumber : monthlyIncome.keySet()) {
             int monthlyReportAmount = monthlyIncome.get(monthNumber);
