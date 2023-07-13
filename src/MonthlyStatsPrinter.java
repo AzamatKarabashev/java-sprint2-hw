@@ -26,12 +26,11 @@ public class MonthlyStatsPrinter {
         String topUnit = null;
         String monthName = null;
         int topProfit = 0;
-        int profit = 0;
         HashMap<String, Integer> asMemory = new HashMap<>();
         for (SaverMonthly saverMonthly : saver) {
             if (!saverMonthly.isExpense) {
                 monthName = saverMonthly.monthName;
-                profit = saverMonthly.quantity * saverMonthly.unitPrice;
+                int profit = saverMonthly.quantity * saverMonthly.unitPrice;
                 asMemory.put(saverMonthly.itemName, asMemory.getOrDefault(saverMonthly.itemName, 0) + profit);
             }
         }
@@ -50,12 +49,11 @@ public class MonthlyStatsPrinter {
         String worstUnit = null;
         String monthName = null;
         int maxWaste = 0;
-        int waste = 0;
         HashMap<String, Integer> asMemory = new HashMap<>();
         for (SaverMonthly saverMonthly : saver) {
             if (saverMonthly.isExpense) {
                 monthName = saverMonthly.monthName;
-                waste = saverMonthly.quantity * saverMonthly.unitPrice;
+                int waste = saverMonthly.quantity * saverMonthly.unitPrice;
                 asMemory.put(saverMonthly.itemName, asMemory.getOrDefault(saverMonthly.itemName, 0) + waste);
             }
         }

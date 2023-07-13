@@ -17,14 +17,14 @@ public class DataCollation {
     public Map<Integer, Integer> yearlyIncome = new HashMap<>();
     public Map<Integer, Integer> yearlyExpense = new HashMap<>();
 
-    public boolean reportChecker(Map<Integer, Integer> monthlyIncome, Map<Integer, Integer> yearlyIncome,
-                                 Map<Integer, Integer> monthlyExpense, Map<Integer, Integer> yearlyExpense) {
+    public void reportChecker(Map<Integer, Integer> monthlyIncome, Map<Integer, Integer> yearlyIncome,
+                              Map<Integer, Integer> monthlyExpense, Map<Integer, Integer> yearlyExpense) {
         /*
         Данный метод сверяет отчеты поданные ему в качестве 4 мап, на месячные доходы и расходы 2 мапы,
         аналогично и для годового отчета. Смотрит имеется ли несоответствия в указанных отчетах,
         ключ к ключу - значение к значению. Ну и сообщает о резуьтатах сверки!
          */
-        boolean checkSuccess = true;
+
         if (monthlyIncome.isEmpty() || yearlyIncome.isEmpty() ||
                 monthlyExpense.isEmpty() || yearlyExpense.isEmpty()) {
             System.out.println("Отчеты не были считаны сверщиком.");
@@ -35,12 +35,11 @@ public class DataCollation {
             if (monthlyReportAmount != yearlyReportAmount) {
                 System.out.printf("По результатам проверки месяца %d, обнаружено несоотвествие " +
                         "суммы доходов по версиям ежемесячных отчетов и ежегодного отчета!\n", monthNumber);
-                checkSuccess = false;
-                continue;
+
             } else {
                 System.out.printf("По результатам проверки месяца %d, " +
                         "несоответствий в отчетах о доходах не обнаружено!\n", monthNumber);
-                checkSuccess = true;
+
             }
         }
         for (Integer monthNumber : monthlyExpense.keySet()) {
@@ -49,15 +48,13 @@ public class DataCollation {
             if (monthlyReportExpense != yearlyReportExpense) {
                 System.out.printf("По результатам проверки месяца %d, обнаружено несоотвествие суммы " +
                         "расходов по версиям ежемесячных отчетов и ежегодного отчета!\n", monthNumber);
-                checkSuccess = false;
-                continue;
+
             } else {
                 System.out.printf("По результатам проверки месяца %d, несоответствий " +
                         "в отчетах о расходах не обнаружено!\n", monthNumber);
-                checkSuccess = true;
+
             }
         }
-        return checkSuccess;
     }
 
     public void yearReportToHashMapSaver(List<SaverYearly> saver) { //сохраняет в хешмапу по ключам месяцы
@@ -81,22 +78,19 @@ public class DataCollation {
             if (!save.isExpense && save.monthName.equalsIgnoreCase("январь")) {
                 int monthNumber = 1;
                 int sumOfIncome = 0;
-                int profitOfIncome = 0;
-                profitOfIncome = save.quantity * save.unitPrice;
+                int profitOfIncome = save.quantity * save.unitPrice;
                 sumOfIncome += profitOfIncome;
                 monthlyIncome.put(monthNumber, monthlyIncome.getOrDefault(monthNumber, 0) + sumOfIncome);
             } else if (!save.isExpense && save.monthName.equalsIgnoreCase("февраль")) {
                 int monthNumber = 2;
                 int sumOfIncome = 0;
-                int profitOfIncome = 0;
-                profitOfIncome = save.quantity * save.unitPrice;
+                int profitOfIncome = save.quantity * save.unitPrice;
                 sumOfIncome += profitOfIncome;
                 monthlyIncome.put(monthNumber, monthlyIncome.getOrDefault(monthNumber, 0) + sumOfIncome);
             } else if (!save.isExpense && save.monthName.equalsIgnoreCase("март")) {
                 int monthNumber = 3;
                 int sumOfIncome = 0;
-                int profitOfIncome = 0;
-                profitOfIncome = save.quantity * save.unitPrice;
+                int profitOfIncome = save.quantity * save.unitPrice;
                 sumOfIncome += profitOfIncome;
                 monthlyIncome.put(monthNumber, monthlyIncome.getOrDefault(monthNumber, 0) + sumOfIncome);
             }
@@ -105,22 +99,19 @@ public class DataCollation {
             if (save.isExpense && save.monthName.equalsIgnoreCase("январь")) {
                 int monthNumber = 1;
                 int sumOfIncome = 0;
-                int profitOfIncome = 0;
-                profitOfIncome = save.quantity * save.unitPrice;
+                int profitOfIncome = save.quantity * save.unitPrice;
                 sumOfIncome += profitOfIncome;
                 monthlyExpense.put(monthNumber, monthlyExpense.getOrDefault(monthNumber, 0) + sumOfIncome);
             } else if (!save.isExpense && save.monthName.equalsIgnoreCase("февраль")) {
                 int monthNumber = 2;
                 int sumOfIncome = 0;
-                int profitOfIncome = 0;
-                profitOfIncome = save.quantity * save.unitPrice;
+                int profitOfIncome = save.quantity * save.unitPrice;
                 sumOfIncome += profitOfIncome;
                 monthlyExpense.put(monthNumber, monthlyExpense.getOrDefault(monthNumber, 0) + sumOfIncome);
             } else if (!save.isExpense && save.monthName.equalsIgnoreCase("март")) {
                 int monthNumber = 3;
                 int sumOfIncome = 0;
-                int profitOfIncome = 0;
-                profitOfIncome = save.quantity * save.unitPrice;
+                int profitOfIncome = save.quantity * save.unitPrice;
                 sumOfIncome += profitOfIncome;
                 monthlyExpense.put(monthNumber, monthlyExpense.getOrDefault(monthNumber, 0) + sumOfIncome);
             }
